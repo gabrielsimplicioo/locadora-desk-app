@@ -1,8 +1,8 @@
-from src.menu import Menu
+from src.gui import JanelaPrincipal
 
 
 def main():
-    Menu().executar()
+    JanelaPrincipal().mainloop()
 
 
 if __name__ == "__main__":

@@ -43,3 +43,17 @@ A `Locadora` agora salva e carrega tudo de um banco SQLite
 `src/cliente_repositorio.py` e `src/aluguel_repositorio.py`. Cada
 cadastro feito pelo menu é gravado no banco na hora, e ao abrir o
 programa de novo os dados da sessão anterior continuam lá.
+
+## Nível 4 — Interface gráfica
+
+`main.py` agora abre uma janela (Tkinter, `src/gui.py`) em vez do menu de
+terminal. A `JanelaPrincipal` tem um botão para cada funcionalidade e
+abre uma janela secundária (`Toplevel`) por ação — cadastro de veículo,
+cadastro de cliente, registro de aluguel, consulta de multa e listagens
+— todas usando a mesma `Locadora` e o mesmo banco SQLite do Nível 3, com
+cores e fontes próprias definidas em `aplicar_estilo`. O menu de
+terminal (`src/menu.py`) continua no projeto e funciona normalmente.
+
+```bash
+python3 main.py
+```
