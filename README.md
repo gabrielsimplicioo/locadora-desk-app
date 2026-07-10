@@ -29,3 +29,11 @@ o vídeo de apresentação.
 Fonte em `docs/diagrama.mmd` (sintaxe Mermaid). Para visualizar/exportar
 como imagem: cole o conteúdo em https://mermaid.live ou use a extensão
 Mermaid do VS Code.
+
+## Nível 2 — Menu no terminal
+
+`main.py` agora inicia um menu (`src/menu.py`) que dá acesso a todos os
+modelos do Nível 1 através da classe `Locadora` (`src/locadora.py`), que
+guarda as coleções de veículos, clientes e aluguéis em memória — sem
+banco de dados, como pedido para este nível. Ao encerrar o programa os
+dados cadastrados na sessão se perdem; persistência entra no Nível 3.
