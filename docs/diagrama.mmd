@@ -1,0 +1,46 @@
+classDiagram
+    class Veiculo {
+        <<abstract>>
+        +placa: str
+        +marca: str
+        +modelo: str
+        +ano: int
+        +valor_diaria: float
+        +calcular_aluguel(dias) float*
+    }
+    class Carro {
+        +num_portas: int
+        +calcular_aluguel(dias) float
+    }
+    class Moto {
+        +cilindrada: int
+        +calcular_aluguel(dias) float
+    }
+    class Caminhao {
+        +capacidade_carga_toneladas: float
+        +calcular_aluguel(dias) float
+    }
+    class Motor {
+        +potencia_cv: float
+        +combustivel: str
+    }
+    class Cliente {
+        +nome: str
+        +cpf: str
+        +telefone: str
+    }
+    class Aluguel {
+        +dias: int
+        +calcular_valor_total() float
+    }
+    class ServicoConsultaMulta {
+        +consultar_multas(veiculo) list
+    }
+
+    Veiculo <|-- Carro : herança
+    Veiculo <|-- Moto : herança
+    Veiculo <|-- Caminhao : herança
+    Veiculo *-- Motor : composição
+    Aluguel --> Cliente : associação
+    Aluguel --> Veiculo : associação
+    ServicoConsultaMulta ..> Veiculo : dependência
