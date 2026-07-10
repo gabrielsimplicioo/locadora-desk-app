@@ -10,6 +10,7 @@ class Veiculo(ABC):
 
     def __init__(self, placa: str, marca: str, modelo: str, ano: int,
                  valor_diaria: float, potencia_cv: float, combustivel: str):
+        self.id = None
         self.placa = placa
         self.marca = marca
         self.modelo = modelo

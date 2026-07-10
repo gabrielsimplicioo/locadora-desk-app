@@ -7,6 +7,7 @@ class Aluguel:
     dos dois pertence a ele nem depende dele para existir."""
 
     def __init__(self, cliente: Cliente, veiculo: Veiculo, dias: int):
+        self.id = None
         self.cliente = cliente
         self.veiculo = veiculo
         self.dias = dias

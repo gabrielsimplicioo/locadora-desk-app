@@ -32,8 +32,14 @@ Mermaid do VS Code.
 
 ## Nível 2 — Menu no terminal
 
-`main.py` agora inicia um menu (`src/menu.py`) que dá acesso a todos os
-modelos do Nível 1 através da classe `Locadora` (`src/locadora.py`), que
-guarda as coleções de veículos, clientes e aluguéis em memória — sem
-banco de dados, como pedido para este nível. Ao encerrar o programa os
-dados cadastrados na sessão se perdem; persistência entra no Nível 3.
+`main.py` inicia um menu (`src/menu.py`) que dá acesso a todos os modelos
+do Nível 1 através da classe `Locadora` (`src/locadora.py`).
+
+## Nível 3 — Persistência em banco de dados
+
+A `Locadora` agora salva e carrega tudo de um banco SQLite
+(`locadora.db`, criado automaticamente na primeira execução) através de
+`src/banco.py` e dos repositórios `src/veiculo_repositorio.py`,
+`src/cliente_repositorio.py` e `src/aluguel_repositorio.py`. Cada
+cadastro feito pelo menu é gravado no banco na hora, e ao abrir o
+programa de novo os dados da sessão anterior continuam lá.
