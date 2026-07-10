@@ -34,14 +34,36 @@ class JanelaPrincipal(tk.Tk):
 
         self.title("Locadora de Veículos")
         self.geometry("420x480")
-        self.resizable(False, False)
+        self.minsize(320, 240)
         aplicar_estilo(self)
 
         ttk.Label(self, text="Locadora de Veículos",
                   style="Titulo.TLabel").pack(pady=(24, 16))
 
-        painel = ttk.Frame(self, style="Painel.TFrame", padding=20)
-        painel.pack(padx=24, pady=8, fill="both", expand=True)
+        area = tk.Canvas(self, bg=COR_FUNDO, highlightthickness=0)
+        barra = ttk.Scrollbar(self, orient="vertical", command=area.yview)
+        area.configure(yscrollcommand=barra.set)
+        area.pack(side="left", padx=(24, 0), pady=8, fill="both", expand=True)
+        barra.pack(side="right", padx=(0, 24), pady=8, fill="y")
+
+        painel = ttk.Frame(area, style="Painel.TFrame", padding=20)
+        janela_painel = area.create_window((0, 0), window=painel, anchor="nw")
+
+        def ajustar_scrollregion(evento):
+            area.configure(scrollregion=area.bbox("all"))
+
+        def ajustar_largura(evento):
+            area.itemconfigure(janela_painel, width=evento.width)
+
+        painel.bind("<Configure>", ajustar_scrollregion)
+        area.bind("<Configure>", ajustar_largura)
+
+        def rolar(evento):
+            area.yview_scroll(int(-evento.delta / 120), "units")
+
+        area.bind_all("<MouseWheel>", rolar)
+        area.bind_all("<Button-4>", lambda evento: area.yview_scroll(-1, "units"))
+        area.bind_all("<Button-5>", lambda evento: area.yview_scroll(1, "units"))
 
         botoes = [
             ("Cadastrar veículo", self.abrir_cadastro_veiculo),
